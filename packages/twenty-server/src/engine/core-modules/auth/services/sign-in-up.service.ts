@@ -88,12 +88,15 @@ export class SignInUpService {
       );
     }
 
+    // [ru-fork] Default locale changed to ru-RU for skyworkerq/twenty-ru fork
+    // upstream default 'en' — see DEFAULT_LOCALE proposal in PR upstream
     const partialNewUser: PartialUserWithPicture = {
       email: newUserPayload.email,
       firstName: newUserPayload.firstName ?? '',
       lastName: newUserPayload.lastName ?? '',
       picture: newUserPayload.picture ?? '',
-      locale: newUserPayload.locale ?? 'en',
+      locale:
+        newUserPayload.locale ?? process.env.DEFAULT_LOCALE ?? 'ru-RU',
       isEmailVerified: newUserPayload.isEmailAlreadyVerified,
     };
 

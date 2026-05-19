@@ -9,6 +9,7 @@ import { type WidgetCardVariant } from '@/page-layout/widgets/types/WidgetCardVa
 import { WidgetCard } from '@/page-layout/widgets/widget-card/components/WidgetCard';
 import { WidgetCardContent } from '@/page-layout/widgets/widget-card/components/WidgetCardContent';
 import { WidgetCardHeader } from '@/page-layout/widgets/widget-card/components/WidgetCardHeader';
+import { getTranslatedSystemTitle } from '@/page-layout/utils/getTranslatedSystemTitle';
 import { styled } from '@linaria/react';
 import { type MouseEvent, useContext } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
@@ -95,7 +96,7 @@ export const WidgetCardShell = ({
             isResizing={isResizing}
             isReorderEnabled={isReorderEnabled}
             isDeletingWidgetEnabled={isDeletingWidgetEnabled}
-            title={widget.title}
+            title={getTranslatedSystemTitle(widget.title)}
             onRemove={onRemove}
             actions={actions}
             forbiddenDisplay={

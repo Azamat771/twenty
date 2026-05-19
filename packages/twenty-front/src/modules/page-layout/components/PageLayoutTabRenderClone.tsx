@@ -1,6 +1,7 @@
 import { isDefined } from 'twenty-shared/utils';
 import { PAGE_LAYOUT_TAB_LIST_DROPPABLE_IDS } from '@/page-layout/components/PageLayoutTabListDroppableIds';
 import { pageLayoutTabListCurrentDragDroppableIdComponentState } from '@/page-layout/states/pageLayoutTabListCurrentDragDroppableIdComponentState';
+import { getTranslatedSystemTitle } from '@/page-layout/utils/getTranslatedSystemTitle';
 import { GenericDropdownContentWidth } from '@/ui/layout/dropdown/constants/GenericDropdownContentWidth';
 import { TabAvatar } from '@/ui/layout/tab-list/components/TabAvatar';
 import { type SingleTabProps } from '@/ui/layout/tab-list/types/SingleTabProps';
@@ -59,7 +60,7 @@ export const PageLayoutTabRenderClone = ({
             active={false}
             disabled={false}
             LeftIcon={tab.Icon}
-            title={tab.title}
+            title={getTranslatedSystemTitle(tab.title)}
             logo={tab.logo}
             pill={tab.pill}
           />
@@ -88,7 +89,7 @@ export const PageLayoutTabRenderClone = ({
           }}
         >
           <MenuItemSelectAvatar
-            text={tab.title}
+            text={getTranslatedSystemTitle(tab.title)}
             avatar={<TabAvatar tab={tab} />}
             selected={tab.id === activeTabId}
             onClick={undefined}

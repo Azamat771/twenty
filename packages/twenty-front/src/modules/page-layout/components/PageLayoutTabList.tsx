@@ -7,6 +7,7 @@ import {
   type ResponderProvided,
 } from '@hello-pangea/dnd';
 import { styled } from '@linaria/react';
+import { getTranslatedSystemTitle } from '@/page-layout/utils/getTranslatedSystemTitle';
 import { useLingui } from '@lingui/react/macro';
 import { useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -110,7 +111,7 @@ export const PageLayoutTabList = ({
 
   const tabsWithIcons: SingleTabProps[] = tabs.map((tab) => ({
     id: tab.id,
-    title: tab.title,
+    title: getTranslatedSystemTitle(tab.title),
     Icon: isDefined(tab.icon) ? getIcon(tab.icon) : undefined,
   }));
 

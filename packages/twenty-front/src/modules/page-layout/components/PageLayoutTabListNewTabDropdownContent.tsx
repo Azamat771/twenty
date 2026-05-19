@@ -12,6 +12,7 @@ import { DropdownMenuSeparator } from '@/ui/layout/dropdown/components/DropdownM
 import { useCloseDropdown } from '@/ui/layout/dropdown/hooks/useCloseDropdown';
 import { activeTabIdComponentState } from '@/ui/layout/tab-list/states/activeTabIdComponentState';
 import { useSetAtomComponentState } from '@/ui/utilities/state/jotai/hooks/useSetAtomComponentState';
+import { getTranslatedSystemTitle } from '@/page-layout/utils/getTranslatedSystemTitle';
 import { useLingui } from '@lingui/react/macro';
 import { useCallback, useMemo } from 'react';
 import { SidePanelPages } from 'twenty-shared/types';
@@ -91,7 +92,7 @@ export const PageLayoutTabListNewTabDropdownContent = ({
               <MenuItem
                 key={tab.id}
                 LeftIcon={isDefined(tab.icon) ? getIcon(tab.icon) : undefined}
-                text={tab.title}
+                text={getTranslatedSystemTitle(tab.title)}
                 onClick={() => handleReactivateTab(tab.id)}
               />
             ))}

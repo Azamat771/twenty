@@ -1,6 +1,7 @@
 import { styled } from '@linaria/react';
 import { type MouseEvent, useContext, useState } from 'react';
 
+import { getTranslatedSystemTitle } from '@/page-layout/utils/getTranslatedSystemTitle';
 import { TabAvatar } from '@/ui/layout/tab-list/components/TabAvatar';
 import { type SingleTabProps } from '@/ui/layout/tab-list/types/SingleTabProps';
 import { IconPencil } from 'twenty-ui/display';
@@ -65,7 +66,7 @@ export const PageLayoutTabMenuItemSelectAvatar = ({
       <StyledMenuItemLeftContent>
         <TabAvatar tab={tab} />
         <StyledTextContainer>
-          <StyledMenuItemLabel>{tab.title}</StyledMenuItemLabel>
+          <StyledMenuItemLabel>{getTranslatedSystemTitle(tab.title)}</StyledMenuItemLabel>
         </StyledTextContainer>
       </StyledMenuItemLeftContent>
 

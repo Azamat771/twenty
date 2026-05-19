@@ -13,6 +13,7 @@ import { type SingleTabProps } from '@/ui/layout/tab-list/types/SingleTabProps';
 import { PAGE_LAYOUT_TAB_LIST_DROPPABLE_IDS } from '@/page-layout/components/PageLayoutTabListDroppableIds';
 import { PageLayoutTabListReorderableTab } from '@/page-layout/components/PageLayoutTabListReorderableTab';
 import { PageLayoutTabRenderClone } from '@/page-layout/components/PageLayoutTabRenderClone';
+import { getTranslatedSystemTitle } from '@/page-layout/utils/getTranslatedSystemTitle';
 
 type PageLayoutTabListVisibleTabsProps = {
   visibleTabs: SingleTabProps[];
@@ -96,7 +97,7 @@ export const PageLayoutTabListVisibleTabs = ({
         <TabButton
           key={tab.id}
           id={tab.id}
-          title={tab.title}
+          title={getTranslatedSystemTitle(tab.title)}
           LeftIcon={tab.Icon}
           logo={tab.logo}
           active={tab.id === activeTabId}

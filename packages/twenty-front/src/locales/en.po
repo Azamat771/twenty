@@ -17828,3 +17828,19 @@ msgstr "Your workspace doesn't have an active subscription. Please contact your 
 #: src/modules/settings/billing/components/SettingsBillingContent.tsx
 msgid "Your workspace will be disabled"
 msgstr "Your workspace will be disabled"
+
+#: src/modules/page-layout/utils/getTranslatedSystemTitle.ts
+msgid "Tasks"
+msgstr "Tasks"
+
+#: src/modules/page-layout/utils/getTranslatedSystemTitle.ts
+msgid "Notes"
+msgstr "Notes"
+
+#: src/modules/page-layout/utils/getTranslatedSystemTitle.ts
+msgid "Files"
+msgstr "Files"
+
+#: src/modules/page-layout/utils/getTranslatedSystemTitle.ts
+msgid "Note"
+msgstr "Note"

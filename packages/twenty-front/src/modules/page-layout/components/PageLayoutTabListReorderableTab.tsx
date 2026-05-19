@@ -1,3 +1,4 @@
+import { getTranslatedSystemTitle } from '@/page-layout/utils/getTranslatedSystemTitle';
 import { Draggable } from '@hello-pangea/dnd';
 
 import { pageLayoutTabSettingsOpenTabIdComponentState } from '@/page-layout/states/pageLayoutTabSettingsOpenTabIdComponentState';
@@ -56,7 +57,7 @@ export const PageLayoutTabListReorderableTab = ({
               active={isActive}
               disabled={disabled}
               LeftIcon={tab.Icon}
-              title={tab.title}
+              title={getTranslatedSystemTitle(tab.title)}
               logo={tab.logo}
               pill={tab.pill}
             />
