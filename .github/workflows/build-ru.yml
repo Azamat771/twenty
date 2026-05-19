@@ -72,8 +72,10 @@ jobs:
           platforms: linux/amd64
           push: true
           provenance: false
+          # APP_VERSION must be valid semver — Twenty server validates this on
+          # startup (config-variables.ts). 2.6.1-ru is the fork's base release.
           build-args: |
-            APP_VERSION=${{ steps.tag.outputs.tag }}
+            APP_VERSION=2.6.1-ru
           tags: |
             ${{ env.REGISTRY }}/${{ steps.tag.outputs.owner }}/twenty-ru:${{ steps.tag.outputs.tag }}
             ${{ env.REGISTRY }}/${{ steps.tag.outputs.owner }}/twenty-ru:latest
