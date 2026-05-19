@@ -42,9 +42,11 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Resolve image tag
+      - name: Resolve image tag and owner
         id: tag
         run: |
+          owner_lc=$(echo '${{ github.repository_owner }}' | tr '[:upper:]' '[:lower:]')
+          echo "owner=${owner_lc}" >> "$GITHUB_OUTPUT"
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "tag=${{ inputs.tag }}" >> "$GITHUB_OUTPUT"
           elif [ "${{ github.ref_type }}" = "tag" ]; then
@@ -73,8 +75,8 @@ jobs:
           build-args: |
             APP_VERSION=${{ steps.tag.outputs.tag }}
           tags: |
-            ${{ env.REGISTRY }}/${{ github.repository_owner }}/twenty-ru:${{ steps.tag.outputs.tag }}
-            ${{ env.REGISTRY }}/${{ github.repository_owner }}/twenty-ru:latest
+            ${{ env.REGISTRY }}/${{ steps.tag.outputs.owner }}/twenty-ru:${{ steps.tag.outputs.tag }}
+            ${{ env.REGISTRY }}/${{ steps.tag.outputs.owner }}/twenty-ru:latest
           labels: |
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
             org.opencontainers.image.description=Twenty CRM with Russian default locale (skyworkerq/twenty-ru fork)
