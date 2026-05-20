@@ -4,6 +4,7 @@ import { PageLayoutWidgetNoDataDisplay } from '@/page-layout/widgets/components/
 import { WidgetSkeletonLoader } from '@/page-layout/widgets/components/WidgetSkeletonLoader';
 import { styled } from '@linaria/react';
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { getSafeUrl, isDefined } from 'twenty-shared/utils';
 import { themeCssVariables } from 'twenty-ui/theme-constants';
 
@@ -69,6 +70,7 @@ export const IframeWidget = ({ widget }: IframeWidgetProps) => {
 
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+  const { objectRecordId } = useParams();
 
   const handleIframeLoad = () => {
     setIsLoading(false);
@@ -79,7 +81,14 @@ export const IframeWidget = ({ widget }: IframeWidgetProps) => {
     setHasError(true);
   };
 
-  const safeUrl = isDefined(url) ? getSafeUrl(url) : undefined;
+  // Прокидываем id текущей записи в URL iframe (?recordId=...), чтобы встроенное
+  // приложение (напр. чат сделки) знало, какая запись открыта. Форк ru-translations.
+  const urlWithRecord =
+    isDefined(url) && isDefined(objectRecordId)
+      ? `${url}${url.includes('?') ? '&' : '?'}recordId=${objectRecordId}`
+      : url;
+
+  const safeUrl = isDefined(urlWithRecord) ? getSafeUrl(urlWithRecord) : undefined;
   const isHttpUrl = isDefined(safeUrl) && /^https?:\/\//i.test(safeUrl);
 
   if (hasError || !isHttpUrl) {
