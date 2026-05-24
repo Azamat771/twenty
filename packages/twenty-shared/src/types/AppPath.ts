@@ -25,6 +25,10 @@ export enum AppPath {
   RecordShowPage = '/object/:objectNameSingular/:objectRecordId',
   PageLayoutPage = '/page/:pageLayoutId',
 
+  // Форк ru-translations: iframe-страницы внешнего email-UI (crm-hooks).
+  EmailInbox = '/email/inbox',
+  EmailSettings = '/email/settings',
+
   Settings = `settings`,
   SettingsCatchAll = `/${Settings}/*`,
   Developers = `developers`,

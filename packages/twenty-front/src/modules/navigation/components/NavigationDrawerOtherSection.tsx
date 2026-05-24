@@ -1,6 +1,11 @@
 import { useLingui } from '@lingui/react/macro';
-import { SettingsPath } from 'twenty-shared/types';
-import { IconHelpCircle, IconSettings } from 'twenty-ui/display';
+import { AppPath, SettingsPath } from 'twenty-shared/types';
+import {
+  IconHelpCircle,
+  IconMail,
+  IconMailCog,
+  IconSettings,
+} from 'twenty-ui/display';
 import { AnimatedExpandableContainer } from 'twenty-ui/layout';
 
 import { currentWorkspaceMemberState } from '@/auth/states/currentWorkspaceMemberState';
@@ -47,6 +52,17 @@ export const NavigationDrawerOtherSection = () => {
         containAnimation
         initial={false}
       >
+        {/* Форк ru-translations: пункты внешнего email-UI (crm-hooks). */}
+        <NavigationDrawerItem
+          label={t`Почта`}
+          to={AppPath.EmailInbox}
+          Icon={IconMail}
+        />
+        <NavigationDrawerItem
+          label={t`Почта — настройки`}
+          to={AppPath.EmailSettings}
+          Icon={IconMailCog}
+        />
         <NavigationDrawerItem
           label={t`Settings`}
           Icon={IconSettings}

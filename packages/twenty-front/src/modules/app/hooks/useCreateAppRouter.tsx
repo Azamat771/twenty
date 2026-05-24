@@ -100,6 +100,19 @@ const StandalonePageLayoutPage = lazy(() =>
   })),
 );
 
+// Форк ru-translations: iframe-страницы внешнего email-UI.
+const EmailInboxPage = lazy(() =>
+  import('~/pages/email/EmailInboxPage').then((module) => ({
+    default: module.EmailInboxPage,
+  })),
+);
+
+const EmailSettingsPage = lazy(() =>
+  import('~/pages/email/EmailSettingsPage').then((module) => ({
+    default: module.EmailSettingsPage,
+  })),
+);
+
 const NotFound = lazy(() =>
   import('~/pages/not-found/NotFound').then((module) => ({
     default: module.NotFound,
@@ -231,6 +244,23 @@ export const useCreateAppRouter = (
             element={
               <LazyRoute>
                 <StandalonePageLayoutPage />
+              </LazyRoute>
+            }
+          />
+          {/* Форк ru-translations: iframe-страницы для внешнего email-UI. */}
+          <Route
+            path={AppPath.EmailInbox}
+            element={
+              <LazyRoute>
+                <EmailInboxPage />
+              </LazyRoute>
+            }
+          />
+          <Route
+            path={AppPath.EmailSettings}
+            element={
+              <LazyRoute>
+                <EmailSettingsPage />
               </LazyRoute>
             }
           />

@@ -75,6 +75,7 @@ import { WorkspaceEventEmitterModule } from 'src/engine/workspace-event-emitter/
 import { ChannelSyncModule } from 'src/modules/connected-account/channel-sync/channel-sync.module';
 import { DashboardModule } from 'src/modules/dashboard/dashboard.module';
 import { SendEmailModule } from 'src/modules/messaging/message-outbound-manager/send-email.module';
+import { SsoHandoffModule } from 'src/modules/sso-handoff/sso-handoff.module';
 import { AuditModule } from './audit/audit.module';
 import { ClientConfigModule } from './client-config/client-config.module';
 import { EventLogsModule } from './event-logs/event-logs.module';
@@ -166,6 +167,8 @@ import { FileModule } from './file/file.module';
     EventLogsModule,
     PreInstalledAppsModule,
     AppBillingModule,
+    // Форк ru-translations: handoff для внешнего email UI
+    SsoHandoffModule,
   ],
   providers: [
     {

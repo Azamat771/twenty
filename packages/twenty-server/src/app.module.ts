@@ -142,5 +142,14 @@ export class AppModule {
         .apply(RestCoreMiddleware, WorkspaceAuthContextMiddleware)
         .forRoutes({ path: 'rest/*path', method });
     }
+
+    // Форк ru-translations: SSO-handoff живёт под /api/sso/*. Нужен
+    // тот же middleware-набор, что и у rest/*, чтобы request.user и
+    // request.workspace инициализировались из Bearer-токена.
+    for (const method of MIGRATED_REST_METHODS) {
+      consumer
+        .apply(RestCoreMiddleware, WorkspaceAuthContextMiddleware)
+        .forRoutes({ path: 'api/*path', method });
+    }
   }
 }
